@@ -13,6 +13,12 @@ public class TestingController : ControllerBase
         _testingServices = testingServices;
     }
 
+    [HttpGet("/api/health")]
+    public IActionResult Helath()
+    {
+        return Ok(_testingServices.getHealth());
+    }
+
     [HttpGet("/api/testing/message")]
     public IActionResult Index()
     {

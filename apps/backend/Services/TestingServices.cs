@@ -1,7 +1,27 @@
+using System;
+using System.Diagnostics;
+using System.Reflection;
+
 namespace workflowEkstensi.backend.Services
 {
     public class TestingServices
     {
+        public object getHealth()
+        {
+            string status = "Healthy";
+            string version = Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "Unknown";
+            string environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development";
+            TimeSpan uptime = DateTime.UtcNow - Process.GetCurrentProcess().StartTime.ToUniversalTime();
+            string formattedUptime = $"{uptime.Days}d {uptime.Hours}h {uptime.Minutes}m {uptime.Seconds}s";
+                return new
+            {
+                status,
+                version,
+                environment,
+                uptime = formattedUptime
+            };
+        }
+
         public string GetMessage()
         {
             return "Hello from TestingServices!";
