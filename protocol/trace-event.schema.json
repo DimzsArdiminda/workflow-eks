@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TraceEvent",
+  "description": "Schema kontrak event tracing antara Laravel Agent, Trace Server, dan Extension",
+  "type": "object",
+  "properties": {
+    "protocolVersion": {
+      "type": "string",
+      "enum": ["1.0"],
+      "description": "Versi protokol kontrak event"
+    },
+    "traceId": {
+      "type": "string",
+      "minLength": 1,
+      "description": "ID unik untuk satu siklus request/aliran trace"
+    },
+    "spanId": {
+      "type": "string",
+      "minLength": 1,
+      "description": "ID unik untuk satu unit kerja dalam trace"
+    },
+    "parentSpanId": {
+      "type": ["string", "null"],
+      "description": "ID unik untuk span induk. Null jika root span"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "request.start",
+        "request.end",
+        "function.enter",
+        "function.exit",
+        "exception",
+        "log",
+        "sql",
+        "http"
+      ],
+      "description": "Jenis event yang didukung"
+    },
+    "timestamp": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Waktu saat event terjadi (Unix timestamp dalam millisecond)"
+    },
+    "serviceName": {
+      "type": ["string", "null"],
+      "description": "Nama aplikasi/service pengirim (opsional)"
+    },
+    "environment": {
+      "type": ["string", "null"],
+      "description": "Environment aplikasi (opsional)"
+    },
+    "payload": {
+      "type": ["object", "null"],
+      "description": "Data kontekstual spesifik untuk event (opsional)"
+    }
+  },
+  "required": ["protocolVersion", "traceId", "spanId", "type", "timestamp"],
+  "additionalProperties": true
+}

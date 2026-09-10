@@ -4,6 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<workflowEkstensi.backend.Services.TestingServices>();
+builder.Services.AddScoped<workflowEkstensi.backend.Services.ProgramServices>();
 
 var app = builder.Build();
 

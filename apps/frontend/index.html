@@ -1,11 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Testing</title>
+    <title>Diagnostic Dashboard - Workflow Extension</title>
+    <style>
+        body { font-family: system-ui, sans-serif; margin: 2rem; background: #0f172a; color: #f8fafc; }
+        .card { background: #1e293b; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; }
+        .badge { background: #3b82f6; color: white; padding: 4px 10px; border-radius: 20px; font-size: 0.85rem; margin-right: 6px; display: inline-block; margin-bottom: 6px; }
+        pre { background: #090d16; padding: 1rem; border-radius: 6px; overflow-x: auto; color: #38bdf8; }
+        .status-pill { font-weight: bold; color: #4ade80; }
+    </style>
 </head>
 <body>
+    <h1>🛠️ Diagnostic Dashboard</h1>
     
+    <div class="card">
+        <h2>Server & Protocol Info</h2>
+        <p><strong>Protocol Version:</strong> <span id="protocol-version" class="status-pill">Loading...</span></p>
+        <p><strong>Supported Events:</strong></p>
+        <div id="supported-events"></div>
+    </div>
+
+    <div class="card">
+        <h2>Sample Valid Payload (<code>request.start</code>)</h2>
+        <pre><code id="sample-payload">Loading...</code></pre>
+    </div>
+
+    <script src="js/apps.js"></script>
 </body>
 </html>
