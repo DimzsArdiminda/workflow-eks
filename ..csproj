@@ -7,8 +7,4 @@
     <RootNamespace>_</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.12" />
-  </ItemGroup>
-
 </Project>

@@ -13,13 +13,13 @@ public class TestingController : ControllerBase
         _testingServices = testingServices;
     }
 
-    [HttpGet("/")]
+    [HttpGet("/api/testing/message")]
     public IActionResult Index()
     {
         return Ok(_testingServices.GetMessage());
     }
 
-    [HttpGet("/greeting/{name}")]
+    [HttpGet("/api/testing/greeting/{name}")]
     public IActionResult Greeting(string name)
     {
         return Ok(_testingServices.GetGreeting(name));
